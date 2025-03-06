@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="my-4">{{ product.name }}</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='uploads/' + product.image) }}" 
+                 class="img-fluid mb-4" style="max-height: 400px; object-fit: cover;">
+        </div>
+        <div class="col-md-6">
+            <h3>Reviews</h3>
+            {% if product.reviews %}
+                {% for review in product.reviews %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Rating: {{ review.rating }}/5</h5>
+                            <p class="card-text">{{ review.text }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No reviews yet. Be the first to review!</p>
+            {% endif %}
+            <h4 class="mt-4">Add Review</h4>
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Rating (1-5)</label>
+                    <select class="form-select" id="rating" name="rating" required>
+                        <option value="5">5 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="2">2 Stars</option>
+                        <option value="1">1 Star</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="review" class="form-label">Your Review</label>
+                    <textarea class="form-control" id="review" name="review" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
