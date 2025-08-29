@@ -1,0 +1,37 @@
+# Compiled binaries and object files
+*.o
+*.so
+*.a
+*.exe
+mtog_manager
+
+# Build artifacts
+*.out
+*.log
+
+# IDE files
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python cache (for existing Flask app)
+__pycache__/
+*.pyc
+*.pyo
+instance/
+.pytest_cache/
+
+# Flask app artifacts (for existing app)
+products.db
+static/uploads/*
+!static/uploads/.gitkeep
+
+# Temporary files
+tmp/
+*.tmp
+*.bak
